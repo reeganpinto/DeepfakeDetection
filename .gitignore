@@ -1,0 +1,14 @@
+# Ignore virtual environment
+deepfake-env/
+env/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore model weights
+*.h5
+*.keras
+
+# Mac system file
+.DS_Store
