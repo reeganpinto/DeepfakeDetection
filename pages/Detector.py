@@ -21,9 +21,9 @@ import time
 @st.cache_resource
 def load_models():
     models = {
-        "Custom CNN": load_model("models_utils/deepfake_custom_model.h5"),
-        "U-Net": load_model("models_utils/deepfake_unet_model.h5"),
-        "Updated-Unet": load_model("models_utils/deepfake_updated_unet_model.h5")
+        "Custom CNN": load_model("models/deepfake_custom_model.h5"),
+        "U-Net": load_model("models/deepfake_unet_model.h5"),
+        "Updated-Unet": load_model("models/deepfake_updated_unet_model.h5")
     }
     return models
 
