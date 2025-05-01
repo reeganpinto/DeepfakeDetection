@@ -41,8 +41,15 @@ uploaded_file = st.file_uploader("Upload an image (JPG/PNG)", type=["jpg", "jpeg
 
 def preprocess_image(image, target_size):
     image = image.convert("RGB")
-    image = image.resize(target_size)
-    img_array = np.array(image) / 255.0
+    image.thumbnail(target_size, Image.LANCZOS)  # Resize while maintaining aspect ratio
+
+    # Create a new black image and paste the resized image onto it (centered)
+    new_image = Image.new("RGB", target_size, (0, 0, 0))  # Black background
+    left = (target_size[0] - image.width) // 2
+    top = (target_size[1] - image.height) // 2
+    new_image.paste(image, (left, top))
+
+    img_array = np.array(new_image) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
