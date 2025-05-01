@@ -7,7 +7,7 @@ __pycache__/
 *.pyc
 
 # Ignore model weights
-*.h5
+
 *.keras
 
 # Mac system file
