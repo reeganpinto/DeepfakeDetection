@@ -24,7 +24,9 @@ def load_models():
         "Custom CNN": load_model("models/deepfake_custom_model.h5"),
         "U-Net": load_model("models/deepfake_unet_model.h5"),
         "Updated-Unet": load_model("models/deepfake_updated_unet_model.h5"),
-        "EfficientNet": load_model("models/EfficientNetB0_model.h5")
+        "Efficient Net": load_model("models/EfficientNetB0_model.h5"),
+        "Dense Net": load_model("models/DenseNet121_model.h5")
+
     }
     return models
 
