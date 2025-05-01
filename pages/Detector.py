@@ -3,7 +3,9 @@ from theme_manager import apply_theme
 apply_theme()
 
 # Continue your app logic
-from tensorflow.keras.models import load_model # type: ignore
+import tensorflow as tf
+from tensorflow.python.keras.models import load_model
+
 from PIL import Image
 import numpy as np
 import time
