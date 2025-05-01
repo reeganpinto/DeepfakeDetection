@@ -38,9 +38,10 @@ model = models[model_choice]
 
 uploaded_file = st.file_uploader("Upload an image (JPG/PNG)", type=["jpg", "jpeg", "png"])
 
-def preprocess_image(image):
+
+def preprocess_image(image, target_size):
     image = image.convert("RGB")
-    image = image.resize((128, 128))
+    image = image.resize(target_size)
     img_array = np.array(image) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
@@ -53,7 +54,16 @@ if uploaded_file is not None:
         with st.spinner("Analyzing image..."):
             start = time.time()
 
-            input_data = preprocess_image(image)
+            # Get model's expected input shape (ignore batch size: usually None)
+            expected_shape = model.input_shape  # e.g., (None, 128, 128, 3)
+            target_size = expected_shape[1:3]   # (height, width)
+
+            input_data = preprocess_image(image, target_size)
+
+            # Log shapes for debugging
+            st.write("Input shape to model:", input_data.shape)
+            st.write("Model expects:", expected_shape)
+
             prediction = model.predict(input_data)[0][0]
             label = "Fake" if prediction >= 0.5 else "Real"
             confidence = prediction if label == "Fake" else 1 - prediction
