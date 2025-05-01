@@ -3,8 +3,16 @@ from theme_manager import apply_theme
 apply_theme()
 
 # Continue your app logic
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+import tensorflow
+from tensorflow import _KerasLazyLoader
+from tensorflow.python import keras
+
+from keras import models
+
+
+from keras.api.models import load_model
+
+#from keras._tf_keras.keras.
 
 from PIL import Image
 import numpy as np
