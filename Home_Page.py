@@ -21,7 +21,7 @@ This app helps detect whether an image is **Real or Fake** using pre-trained dee
 Use the sidebar to navigate between pages:
 
 - **🔍 Deepfake Detector**: Upload an image and test it.
-- **📊 Model Stats** *(Coming soon)*
+- **📊 Model Stats** : Checkout the accuracies for different models
 """)
 
 
