@@ -74,7 +74,7 @@ if uploaded_file is not None:
             st.write("Model expects:", expected_shape)
 
             prediction = model.predict(input_data)[0][0]
-            label = "Fake" if prediction >= 0.18035 else "Real"
+            label = "Fake" if prediction >= 0.179 else "Real"
             confidence = prediction if label == "Fake" else 1 - prediction
 
             elapsed = time.time() - start
