@@ -27,7 +27,7 @@ model_details = {
     
     "U-Net": {
         "Description": "A U-shaped model typically used for segmentation but adapted here for classification.",
-        "Input Size": "128x128 RGB",
+        "Input Size": "224x224 RGB",
         "Accuracy": "72.2%",
         "Pros": "Useful for localized features.",
         "Cons": "Not originally designed for classification tasks."
