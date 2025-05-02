@@ -70,12 +70,15 @@ if uploaded_file is not None:
             input_data = preprocess_image(image, target_size)
 
             # Log shapes for debugging
-            st.write("Input shape to model:", input_data.shape)
-            st.write("Model expects:", expected_shape)
-
-            prediction = model.predict(input_data)[0][0]
-            label = "Real" if prediction >= 0.185 else "Fake"
-            confidence = 1 - prediction if label == "Fake" else 1 - prediction
+            
+            if (model_choice == "Efficient Net" or "Dense Net") :
+              prediction = model.predict(input_data)[0][0]
+              label = "Real" if prediction >= 0.185 else "Fake"
+              confidence = 1 - prediction if label == "Fake" else 1 - prediction
+            else:
+                prediction = model.predict(input_data)[0][0]
+                label = "Fake" if prediction >= 0.5 else "Real"
+                confidence = prediction if label == "Fake" else 1 - prediction
 
             elapsed = time.time() - start
             if elapsed < 2:
